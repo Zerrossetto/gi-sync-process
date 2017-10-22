@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<annuncio>
+    <info>
+        <id>14503</id>
+        <agency_code>AP56</agency_code>
+        <ape version="2015" epgl_ren="11.00" epgl_nren="22.00" flag_quasi_zero="0" prestazione_inverno="buono" prestazione_estate="medio"></ape>
+        <deleted>0</deleted>
+        <flag_storico>0</flag_storico>
+        <flag_vetrina>0</flag_vetrina>
+        <flag_carosello>0</flag_carosello>
+        <mq>121</mq>
+        <price>100000000</price>
+        <age>recente</age>
+        <ipe>67.50</ipe>
+        <ipe_unit>kWh/m2anno</ipe_unit>
+        <description>appartamento ristrutturato bla bla bla</description>
+        <note>appartamento ristrutturato bla bla bla</note>
+        <abstract>appartamento ristrutturato bla</abstract>
+        <finiture>finiture di lusso</finiture>
+        <provincia>padova</provincia>
+        <comune>abano terme</comune>
+        <zona>vicino stazione</zona>
+        <comune_istat>144435</comune_istat>
+        <indirizzo>via bla bla, 45</indirizzo>
+        <last_editor_time>2011-10-22 18:23:12</last_editor_time>
+        <categorie_id>10</categorie_id>
+        <categorie_micro_id>10</categorie_micro_id>
+        <spese_condominiali>40</spese_condominiali>
+        <cantiere_id>14</cantiere_id>
+        <consegna>a Dicembre</consegna>
+    </info>
+    <file_allegati>
+        <allegato id="1" planimetria="0">
+            <id>1</id>
+            <file_path>http://www.gestionaleimmobiliare.it/url_della_foto1.jpg</file_path>
+        </allegato>
+        <allegato id="2" planimetria="1">
+            <id>2</id>
+            <file_path>http://www.gestionaleimmobiliare.it/url_della_foto23.gif</file_path>
+        </allegato>
+    </file_allegati>
+    <info_inserite>
+        <info id="1">
+            <id>1</id>
+            <valore_assegnato>2</valore_assegnato>
+        </info>
+        <info id="2">
+            <id>2</id>
+            <valore_assegnato>1</valore_assegnato>
+        </info>
+        <info id="7">
+            <id>7</id>
+            <valore_assegnato>1</valore_assegnato>
+        </info>
+    </info_inserite>
+    <dati_inseriti>
+        <dati id="1">0</dati>
+        <dati id="2">0</dati>
+    </dati_inseriti>
+</annuncio>
