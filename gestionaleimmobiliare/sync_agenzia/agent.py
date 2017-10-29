@@ -1,7 +1,11 @@
-from io import BytesIO, StringIO
+from io import BytesIO
 from datetime import datetime
+from typing import Union, Optional
 from lxml import objectify
 from lxml import etree
+
+from .mapping.info_inserite import InfoInserita
+from .mapping.dati_disponibili import DatoDisponibile
 
 
 SYNC_AGENZIA_FAKE_NS = 'http://gestionaleimmobiliare.it/export/sync_agenzia'
@@ -12,7 +16,8 @@ class SyncAgenziaAgent:
     def __init__(self):
         pass
 
-    def synchronize_wordpress(self):
+    @staticmethod
+    def synchronize_wordpress():
         print('start sync')
 
 
@@ -23,11 +28,19 @@ class SyncInterpreter:
         self.timeout = timeout
 
     @staticmethod
-    def parse_xml(xml_string: str) -> etree.ElementTree:
-        doc = objectify.parse(BytesIO(bytearray(xml_string, 'UTF-8')))
-        doc.getroot().set('xmlns', SYNC_AGENZIA_FAKE_NS)
+    def enrich_xml(xml_string: str) -> str:
 
-        objectify.PyType('date', DateElement.check_date, DateElement).register()
+        doc = objectify.parse(BytesIO(bytearray(xml_string, 'UTF-8')))
+        dataset = doc.getroot()
+        dataset.set('xmlns', SYNC_AGENZIA_FAKE_NS)
+
+        for info_tag in dataset.xpath('//dataset/annuncio/info'):
+            info_tag.set('id', str(info_tag.id))
+
+        return etree.tostring(doc)
+
+    @staticmethod
+    def build_parser() -> etree.XMLParser:
 
         parser = objectify.makeparser(remove_blank_text=True)
         lookup = etree.ElementNamespaceClassLookup(fallback=objectify.ObjectifyElementClassLookup())
@@ -35,10 +48,21 @@ class SyncInterpreter:
 
         namespace = lookup.get_namespace(SYNC_AGENZIA_FAKE_NS)
 
-        for element in (ApeElement, AllegatoElement, IncaricoElement):
+        for element in (ApeElement, AllegatoElement, IncaricoElement,
+                        InfoElement, DatoDisponibileElement, InfoInseriteElement, DatiDisponibiliElement):
             namespace[element.tag_name] = element
 
-        return objectify.parse(BytesIO(etree.tostring(doc)), parser=parser)
+        return parser
+
+    @staticmethod
+    def parse_xml(xml_string: str) -> etree.ElementTree:
+
+        objectify.PyType('date', DateElement.check_date, DateElement).register()
+
+        doc = objectify.parse(BytesIO(SyncInterpreter.enrich_xml(xml_string)),
+                              parser=SyncInterpreter.build_parser())
+
+        return doc
 
 
 class DateElement(objectify.ObjectifiedDataElement):
@@ -82,6 +106,7 @@ class ApeElement(objectify.StringElement):
     def prestazione_inverno(self):
         return self.get('prestazione_inverno')
 
+
 class AllegatoElement(objectify.ObjectifiedElement):
 
     tag_name = 'allegato'
@@ -92,6 +117,7 @@ class AllegatoElement(objectify.ObjectifiedElement):
 
     def is_blueprint(self):
         return bool(int(self.get('planimetria')))
+
 
 class IncaricoElement(objectify.StringElement):
 
@@ -104,3 +130,69 @@ class IncaricoElement(objectify.StringElement):
     @property
     def fine(self):
         return self.get('fine')
+
+
+class InfoElement(objectify.ObjectifiedElement):
+
+    tag_name = 'info'
+
+    @property
+    def id(self) -> Optional[int]:
+        try:
+            return int(self.get('id'))
+        except TypeError:
+            return None
+
+    @property
+    def information_type(self) -> Optional[InfoInserita]:
+        try:
+            return InfoInserita(self.id)
+        except ValueError:
+            return None
+
+    @property
+    def mapped_value(self) -> Union[InfoInserita, int, bool, None]:
+        try:
+            return self.information_type.mapped_value(self.valore_assegnato)
+        except ValueError:
+            return None
+
+    @property
+    def keep_in_list(self) -> Optional[bool]:
+        try:
+            return self.information_type.keep_in_list(self.valore_assegnato)
+        except ValueError:
+            return None
+
+
+class InfoInseriteElement(objectify.ObjectifiedElement):
+
+    tag_name = 'info_inserite'
+
+    def by_information_type(self, info_inserita: InfoInserita) -> Optional[InfoElement]:
+        for info in self.iterchildren():
+            if info.id == info_inserita.value:
+                return info
+
+
+class DatoDisponibileElement(objectify.IntElement):
+
+    tag_name = 'dati'
+
+    @property
+    def id(self) -> int:
+        return int(self.get('id'))
+
+    @property
+    def information_type(self) -> DatoDisponibile:
+        return DatoDisponibile(self.id)
+
+
+class DatiDisponibiliElement(objectify.ObjectifiedElement):
+
+    tag_name = 'dati_inseriti'
+
+    def by_information_type(self, dato_disponibile: DatoDisponibile) -> Optional[DatoDisponibileElement]:
+        for dato in self.iterchildren():
+            if dato.id == dato_disponibile.value:
+                return dato

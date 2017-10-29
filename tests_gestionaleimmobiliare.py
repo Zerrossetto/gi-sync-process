@@ -5,6 +5,8 @@ from os.path import join
 
 from gestionaleimmobiliare.sync_agenzia.fetch_remote import TarFile, TarGzFile
 from gestionaleimmobiliare.sync_agenzia.agent import SyncInterpreter
+from gestionaleimmobiliare.sync_agenzia.mapping.info_inserite import InfoInserita, EnergyLabel
+from gestionaleimmobiliare.sync_agenzia.mapping.dati_disponibili import DatoDisponibile
 
 relative_path = ['tests', 'resources']
 test_archive_content = ['test-tar-archive',
@@ -101,11 +103,53 @@ class GISyncInterpreterTests(unittest.TestCase):
         xml_content = self.mock_response('annuncio.xml')
         sync_agent = SyncInterpreter('http://domain.com')
         doc = sync_agent.parse_xml(xml_content)
-        annuncio = doc.getroot()
+        annuncio = doc.getroot().annuncio[0]
 
+        self.assertEqual(annuncio.info.id, 14503)
         self.assertEqual(annuncio.info.agency_code, 'AP56')
         self.assertEqual(annuncio.info.ape.version, 2015)
         self.assertEqual(annuncio.info.ape.epgl_ren, 11.00)
         self.assertEqual(annuncio.info.ape.prestazione_estate, 'medio')
         self.assertFalse(annuncio.file_allegati.allegato[0].planimetria)
         self.assertTrue(annuncio.file_allegati.allegato[1].planimetria)
+
+    def test_info_inserite(self) -> None:
+        xml_content = self.mock_response('annuncio.xml')
+        sync_agent = SyncInterpreter('http://domain.com')
+        doc = sync_agent.parse_xml(xml_content)
+        info_inserite = doc.getroot().annuncio[0].info_inserite
+
+        info_cantina = info_inserite.by_information_type(InfoInserita.cantina)
+
+        self.assertEqual(info_cantina.information_type, InfoInserita.cantina)
+        self.assertTrue(info_cantina.mapped_value)
+
+        info_classe_energetica = info_inserite.by_information_type(InfoInserita.classe_energetica)
+
+        self.assertEqual(info_classe_energetica.information_type, InfoInserita.classe_energetica)
+        self.assertEqual(info_classe_energetica.mapped_value, EnergyLabel.B)
+
+    def test_dati_disponibili(self) -> None:
+        xml_content = self.mock_response('annuncio.xml')
+        sync_agent = SyncInterpreter('http://domain.com')
+        doc = sync_agent.parse_xml(xml_content)
+        dati_disponibili = doc.getroot().annuncio[0].dati_inseriti
+
+        info_chiavi = dati_disponibili.by_information_type(DatoDisponibile.numero_chiavi)
+
+        self.assertEqual(info_chiavi.information_type, DatoDisponibile.numero_chiavi)
+        self.assertEqual(info_chiavi, 1)
+
+        info_altezza = dati_disponibili.by_information_type(DatoDisponibile.altezza)
+
+        self.assertEqual(info_altezza.information_type, DatoDisponibile.altezza)
+        self.assertEqual(info_altezza, 0)
+
+
+class InfoInseriteTests(unittest.TestCase):
+
+    def test_iteration(self):
+        self.assertEqual(InfoInserita(47), InfoInserita.predisposizione_aria_condizionata)
+        self.assertEqual(InfoInserita(80), InfoInserita.forno)
+
+        self.assertEqual(InfoInserita.classe_energetica.value_type, EnergyLabel)

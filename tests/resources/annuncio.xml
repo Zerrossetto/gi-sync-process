@@ -1,60 +1,179 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<annuncio>
-    <info>
-        <id>14503</id>
-        <agency_code>AP56</agency_code>
-        <ape version="2015" epgl_ren="11.00" epgl_nren="22.00" flag_quasi_zero="0" prestazione_inverno="buono" prestazione_estate="medio"></ape>
-        <deleted>0</deleted>
-        <flag_storico>0</flag_storico>
-        <flag_vetrina>0</flag_vetrina>
-        <flag_carosello>0</flag_carosello>
-        <mq>121</mq>
-        <price>100000000</price>
-        <age>recente</age>
-        <ipe>67.50</ipe>
-        <ipe_unit>kWh/m2anno</ipe_unit>
-        <description>appartamento ristrutturato bla bla bla</description>
-        <note>appartamento ristrutturato bla bla bla</note>
-        <abstract>appartamento ristrutturato bla</abstract>
-        <finiture>finiture di lusso</finiture>
-        <provincia>padova</provincia>
-        <comune>abano terme</comune>
-        <zona>vicino stazione</zona>
-        <comune_istat>144435</comune_istat>
-        <indirizzo>via bla bla, 45</indirizzo>
-        <last_editor_time>2011-10-22 18:23:12</last_editor_time>
-        <categorie_id>10</categorie_id>
-        <categorie_micro_id>10</categorie_micro_id>
-        <spese_condominiali>40</spese_condominiali>
-        <cantiere_id>14</cantiere_id>
-        <consegna>a Dicembre</consegna>
-    </info>
-    <file_allegati>
-        <allegato id="1" planimetria="0">
-            <id>1</id>
-            <file_path>http://www.gestionaleimmobiliare.it/url_della_foto1.jpg</file_path>
-        </allegato>
-        <allegato id="2" planimetria="1">
-            <id>2</id>
-            <file_path>http://www.gestionaleimmobiliare.it/url_della_foto23.gif</file_path>
-        </allegato>
-    </file_allegati>
-    <info_inserite>
-        <info id="1">
-            <id>1</id>
-            <valore_assegnato>2</valore_assegnato>
+<dataset>
+    <annuncio>
+        <info>
+            <id>14503</id>
+            <agency_code>AP56</agency_code>
+            <ape version="2015" epgl_ren="11.00" epgl_nren="22.00" flag_quasi_zero="0" prestazione_inverno="buono" prestazione_estate="medio"></ape>
+            <deleted>0</deleted>
+            <flag_storico>0</flag_storico>
+            <flag_vetrina>0</flag_vetrina>
+            <flag_carosello>0</flag_carosello>
+            <mq>121</mq>
+            <price>100000000</price>
+            <age>recente</age>
+            <ipe>67.50</ipe>
+            <ipe_unit>kWh/m2anno</ipe_unit>
+            <description>appartamento ristrutturato bla bla bla</description>
+            <note>appartamento ristrutturato bla bla bla</note>
+            <abstract>appartamento ristrutturato bla</abstract>
+            <finiture>finiture di lusso</finiture>
+            <provincia>padova</provincia>
+            <comune>abano terme</comune>
+            <zona>vicino stazione</zona>
+            <comune_istat>144435</comune_istat>
+            <indirizzo>via bla bla, 45</indirizzo>
+            <last_editor_time>2011-10-22 18:23:12</last_editor_time>
+            <categorie_id>10</categorie_id>
+            <categorie_micro_id>10</categorie_micro_id>
+            <spese_condominiali>40</spese_condominiali>
+            <cantiere_id>14</cantiere_id>
+            <consegna>a Dicembre</consegna>
         </info>
-        <info id="2">
-            <id>2</id>
-            <valore_assegnato>1</valore_assegnato>
-        </info>
-        <info id="7">
-            <id>7</id>
-            <valore_assegnato>1</valore_assegnato>
-        </info>
-    </info_inserite>
-    <dati_inseriti>
-        <dati id="1">0</dati>
-        <dati id="2">0</dati>
-    </dati_inseriti>
-</annuncio>
+        <file_allegati>
+            <allegato id="1" planimetria="0">
+                <id>1</id>
+                <file_path>http://www.gestionaleimmobiliare.it/url_della_foto1.jpg</file_path>
+            </allegato>
+            <allegato id="2" planimetria="1">
+                <id>2</id>
+                <file_path>http://www.gestionaleimmobiliare.it/url_della_foto23.gif</file_path>
+            </allegato>
+        </file_allegati>
+        <info_inserite>
+			<info id="1"><id>1</id><valore_assegnato>1</valore_assegnato></info>
+			<info id="2"><id>2</id><valore_assegnato>2</valore_assegnato></info>
+			<info id="3"><id>3</id><valore_assegnato>0</valore_assegnato></info>
+			<info id="4"><id>4</id><valore_assegnato>0</valore_assegnato></info>
+			<info id="5"><id>5</id><valore_assegnato>1</valore_assegnato></info>
+			<info id="6"><id>6</id><valore_assegnato>0</valore_assegnato></info>
+			<info id="7"><id>7</id><valore_assegnato>1</valore_assegnato></info>
+			<info id="8"><id>8</id><valore_assegnato>1</valore_assegnato></info>
+			<info id="9"><id>9</id><valore_assegnato>1</valore_assegnato></info>
+			<info id="10"><id>10</id><valore_assegnato>0</valore_assegnato></info>
+			<info id="11"><id>11</id><valore_assegnato>0</valore_assegnato></info>
+			<info id="12"><id>12</id><valore_assegnato>0</valore_assegnato></info>
+			<info id="13"><id>13</id><valore_assegnato>1</valore_assegnato></info>
+			<info id="14"><id>14</id><valore_assegnato>1</valore_assegnato></info>
+			<info id="15"><id>15</id><valore_assegnato>0</valore_assegnato></info>
+			<info id="16"><id>16</id><valore_assegnato>0</valore_assegnato></info>
+			<info id="17"><id>17</id><valore_assegnato>0</valore_assegnato></info>
+			<info id="18"><id>18</id><valore_assegnato>0</valore_assegnato></info>
+			<info id="19"><id>19</id><valore_assegnato>0</valore_assegnato></info>
+			<info id="20"><id>20</id><valore_assegnato>0</valore_assegnato></info>
+			<info id="21"><id>21</id><valore_assegnato>1</valore_assegnato></info>
+			<info id="22"><id>22</id><valore_assegnato>1</valore_assegnato></info>
+			<info id="23"><id>23</id><valore_assegnato>0</valore_assegnato></info>
+			<info id="24"><id>24</id><valore_assegnato>1</valore_assegnato></info>
+			<info id="25"><id>25</id><valore_assegnato>0</valore_assegnato></info>
+			<info id="26"><id>26</id><valore_assegnato>0</valore_assegnato></info>
+			<info id="27"><id>27</id><valore_assegnato>0</valore_assegnato></info>
+			<info id="28"><id>28</id><valore_assegnato>0</valore_assegnato></info>
+			<info id="29"><id>29</id><valore_assegnato>1</valore_assegnato></info>
+			<info id="30"><id>30</id><valore_assegnato>0</valore_assegnato></info>
+			<info id="31"><id>31</id><valore_assegnato>0</valore_assegnato></info>
+			<info id="32"><id>32</id><valore_assegnato>4</valore_assegnato></info>
+			<info id="33"><id>33</id><valore_assegnato>1</valore_assegnato></info>
+			<info id="34"><id>34</id><valore_assegnato>0</valore_assegnato></info>
+			<info id="35"><id>35</id><valore_assegnato>0</valore_assegnato></info>
+			<info id="36"><id>36</id><valore_assegnato>0</valore_assegnato></info>
+			<info id="37"><id>37</id><valore_assegnato>0</valore_assegnato></info>
+			<info id="38"><id>38</id><valore_assegnato>0</valore_assegnato></info>
+			<info id="39"><id>39</id><valore_assegnato>0</valore_assegnato></info>
+			<info id="40"><id>40</id><valore_assegnato>0</valore_assegnato></info>
+			<info id="41"><id>41</id><valore_assegnato>1</valore_assegnato></info>
+			<info id="42"><id>42</id><valore_assegnato>0</valore_assegnato></info>
+			<info id="43"><id>43</id><valore_assegnato>0</valore_assegnato></info>
+			<info id="44"><id>44</id><valore_assegnato>0</valore_assegnato></info>
+			<info id="45"><id>45</id><valore_assegnato>0</valore_assegnato></info>
+			<info id="46"><id>46</id><valore_assegnato>0</valore_assegnato></info>
+			<info id="47"><id>47</id><valore_assegnato>0</valore_assegnato></info>
+			<info id="48"><id>48</id><valore_assegnato>0</valore_assegnato></info>
+			<info id="49"><id>49</id><valore_assegnato>0</valore_assegnato></info>
+			<info id="50"><id>50</id><valore_assegnato>0</valore_assegnato></info>
+			<info id="51"><id>51</id><valore_assegnato>0</valore_assegnato></info>
+			<info id="52"><id>52</id><valore_assegnato>0</valore_assegnato></info>
+			<info id="53"><id>53</id><valore_assegnato>0</valore_assegnato></info>
+			<info id="54"><id>54</id><valore_assegnato>0</valore_assegnato></info>
+			<info id="55"><id>55</id><valore_assegnato>3</valore_assegnato></info>
+			<info id="56"><id>56</id><valore_assegnato>0</valore_assegnato></info>
+			<info id="57"><id>57</id><valore_assegnato>5</valore_assegnato></info>
+			<info id="58"><id>58</id><valore_assegnato>0</valore_assegnato></info>
+			<info id="59"><id>59</id><valore_assegnato>0</valore_assegnato></info>
+			<info id="60"><id>60</id><valore_assegnato>0</valore_assegnato></info>
+			<info id="61"><id>61</id><valore_assegnato>0</valore_assegnato></info>
+			<info id="62"><id>62</id><valore_assegnato>0</valore_assegnato></info>
+			<info id="63"><id>63</id><valore_assegnato>0</valore_assegnato></info>
+			<info id="64"><id>64</id><valore_assegnato>0</valore_assegnato></info>
+			<info id="65"><id>65</id><valore_assegnato>3</valore_assegnato></info>
+			<info id="66"><id>66</id><valore_assegnato>0</valore_assegnato></info>
+			<info id="67"><id>67</id><valore_assegnato>0</valore_assegnato></info>
+			<info id="68"><id>68</id><valore_assegnato>0</valore_assegnato></info>
+			<info id="69"><id>69</id><valore_assegnato>0</valore_assegnato></info>
+			<info id="70"><id>70</id><valore_assegnato>1</valore_assegnato></info>
+			<info id="71"><id>71</id><valore_assegnato>0</valore_assegnato></info>
+			<info id="72"><id>72</id><valore_assegnato>0</valore_assegnato></info>
+			<info id="73"><id>73</id><valore_assegnato>0</valore_assegnato></info>
+			<info id="74"><id>74</id><valore_assegnato>0</valore_assegnato></info>
+			<info id="75"><id>75</id><valore_assegnato>0</valore_assegnato></info>
+			<info id="76"><id>76</id><valore_assegnato>0</valore_assegnato></info>
+			<info id="77"><id>77</id><valore_assegnato>1</valore_assegnato></info>
+			<info id="78"><id>78</id><valore_assegnato>0</valore_assegnato></info>
+			<info id="79"><id>79</id><valore_assegnato>0</valore_assegnato></info>
+			<info id="80"><id>80</id><valore_assegnato>0</valore_assegnato></info>
+			<info id="81"><id>81</id><valore_assegnato>0</valore_assegnato></info>
+			<info id="82"><id>82</id><valore_assegnato>0</valore_assegnato></info>
+			<info id="83"><id>83</id><valore_assegnato>0</valore_assegnato></info>
+			<info id="84"><id>84</id><valore_assegnato>0</valore_assegnato></info>
+			<info id="85"><id>85</id><valore_assegnato>0</valore_assegnato></info>
+			<info id="86"><id>86</id><valore_assegnato>0</valore_assegnato></info>
+			<info id="87"><id>87</id><valore_assegnato>0</valore_assegnato></info>
+			<info id="88"><id>88</id><valore_assegnato>0</valore_assegnato></info>
+			<info id="89"><id>89</id><valore_assegnato>0</valore_assegnato></info>
+			<info id="90"><id>90</id><valore_assegnato>1</valore_assegnato></info>
+			<info id="91"><id>91</id><valore_assegnato>0</valore_assegnato></info>
+			<info id="92"><id>92</id><valore_assegnato>0</valore_assegnato></info>
+			<info id="93"><id>93</id><valore_assegnato>0</valore_assegnato></info>
+			<info id="94"><id>94</id><valore_assegnato>1</valore_assegnato></info>
+			<info id="95"><id>95</id><valore_assegnato>1</valore_assegnato></info>
+			<info id="96"><id>96</id><valore_assegnato>0</valore_assegnato></info>
+			<info id="97"><id>97</id><valore_assegnato>0</valore_assegnato></info>
+			<info id="98"><id>98</id><valore_assegnato>0</valore_assegnato></info>
+			<info id="99"><id>99</id><valore_assegnato>1</valore_assegnato></info>
+			<info id="100"><id>100</id><valore_assegnato>0</valore_assegnato></info>
+			<info id="101"><id>101</id><valore_assegnato>0</valore_assegnato></info>
+			<info id="102"><id>102</id><valore_assegnato>0</valore_assegnato></info>
+			<info id="103"><id>103</id><valore_assegnato>0</valore_assegnato></info>
+			<info id="104"><id>104</id><valore_assegnato>0</valore_assegnato></info>
+			<info id="105"><id>105</id><valore_assegnato>0</valore_assegnato></info>
+        </info_inserite>
+        <dati_inseriti>
+			<dati id="1">0</dati>
+			<dati id="2">0</dati>
+			<dati id="3">0</dati>
+			<dati id="4">0</dati>
+			<dati id="5">0</dati>
+			<dati id="6">0</dati>
+			<dati id="7">0</dati>
+			<dati id="8">0</dati>
+			<dati id="12">0</dati>
+			<dati id="13">0</dati>
+			<dati id="14">0</dati>
+			<dati id="15">0</dati>
+			<dati id="16">0</dati>
+			<dati id="17">1</dati>
+			<dati id="18">0</dati>
+			<dati id="19">0</dati>
+			<dati id="20">0</dati>
+			<dati id="21">0</dati>
+			<dati id="22">0</dati>
+			<dati id="23">0</dati>
+			<dati id="24">0</dati>
+			<dati id="25">0</dati>
+			<dati id="26">0</dati>
+			<dati id="27">0</dati>
+			<dati id="28">0</dati>
+			<dati id="29">0</dati>
+        </dati_inseriti>
+    </annuncio>
+</dataset>
