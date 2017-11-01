@@ -1,3 +1,5 @@
+import urllib.parse
+
 from io import BytesIO
 from datetime import datetime
 from typing import Union, Optional
@@ -13,12 +15,24 @@ SYNC_AGENZIA_FAKE_NS = 'http://gestionaleimmobiliare.it/export/sync_agenzia'
 
 class SyncAgenziaAgent:
 
-    def __init__(self):
-        pass
+    def __init__(self, config: dict):
 
-    @staticmethod
-    def synchronize_wordpress():
-        print('start sync')
+        self.homepage = config['homepage']
+        self.description = config['description']
+
+        # add optional parameters to connection url and rebuild de result
+        url_parts = list(urllib.parse.urlparse(config['export_url']))
+        query_part = dict(urllib.parse.parse_qsl(url_parts[4]))
+        query_part.update({k: v for k, v in config['options'].items() if v})
+        url_parts[4] = urllib.parse.urlencode(query_part)
+
+        # save result
+        self.connection_url = urllib.parse.urlunparse(url_parts)
+
+    def synchronize_wordpress(self):
+        print('starting connection to {}'.format(self.connection_url))
+
+
 
 
 class SyncInterpreter:
@@ -169,6 +183,12 @@ class InfoInseriteElement(objectify.ObjectifiedElement):
 
     tag_name = 'info_inserite'
 
+    def __getitem__(self, *args, **kwargs):
+        if len(args) == 1 and type(args[0]) == InfoInserita:
+            return self.by_information_type(args[0])
+        else:
+            return super(InfoInseriteElement, self).__getitem__(*args, **kwargs)
+
     def by_information_type(self, info_inserita: InfoInserita) -> Optional[InfoElement]:
         for info in self.iterchildren():
             if info.id == info_inserita.value:
@@ -178,6 +198,7 @@ class InfoInseriteElement(objectify.ObjectifiedElement):
 class DatoDisponibileElement(objectify.IntElement):
 
     tag_name = 'dati'
+
 
     @property
     def id(self) -> int:
@@ -191,6 +212,12 @@ class DatoDisponibileElement(objectify.IntElement):
 class DatiDisponibiliElement(objectify.ObjectifiedElement):
 
     tag_name = 'dati_inseriti'
+
+    def __getitem__(self, *args, **kwargs):
+        if len(args) == 1 and type(args[0]) == DatoDisponibile:
+            return self.by_information_type(args[0])
+        else:
+            return super(DatiDisponibiliElement, self).__getitem__(*args, **kwargs)
 
     def by_information_type(self, dato_disponibile: DatoDisponibile) -> Optional[DatoDisponibileElement]:
         for dato in self.iterchildren():

@@ -1,0 +1,52 @@
+---
+base_config:
+  gi_homepage: http://gi.com/
+  connection_timeout: 10
+  agencies:
+    - rome:
+      description: Rome agency
+      homepage: http://www.domain.com/
+      export_url: https://pannello.gestionaleimmobiliare.it/export_xml_annunci1.html
+      options:
+        i18n: 0
+        video: 0
+        virtual: 0
+        latlng: 0
+        geo_id: 0
+        flag_storico: 0
+        note_nascoste: 0
+        abstract: 0
+        finiture: 0
+        micro_categorie: 0
+        stima: 0
+        ind_reale: 0
+        agente: 0
+        persone: 0
+      image:
+        resize: 1
+        normalize: 1
+        apply_watermark: 0
+    - milan:
+      description: Milan agency
+      homepage: http://www.domain2.com/
+      export_url: https://pannello.gestionaleimmobiliare.it/export_xml_annunci2.html
+      options:
+        i18n: 0
+        video: 0
+        virtual: 0
+        latlng: 0
+        geo_id: 1
+        flag_storico: 0
+        note_nascoste: 0
+        abstract: 0
+        finiture: 0
+        micro_categorie: 0
+        stima: 1
+        ind_reale: 0
+        agente: 0
+        persone: 0
+      image:
+        resize: 1
+        normalize: 1
+        apply_watermark: 0
+...

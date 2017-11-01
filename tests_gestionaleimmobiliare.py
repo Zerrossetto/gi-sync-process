@@ -123,11 +123,16 @@ class GISyncInterpreterTests(unittest.TestCase):
 
         self.assertEqual(info_cantina.information_type, InfoInserita.cantina)
         self.assertTrue(info_cantina.mapped_value)
+        self.assertEqual(info_cantina, info_inserite[InfoInserita.cantina])
+
+        self.assertEqual(info_cantina.information_type, InfoInserita.cantina)
+        self.assertTrue(info_cantina.mapped_value)
 
         info_classe_energetica = info_inserite.by_information_type(InfoInserita.classe_energetica)
 
         self.assertEqual(info_classe_energetica.information_type, InfoInserita.classe_energetica)
         self.assertEqual(info_classe_energetica.mapped_value, EnergyLabel.B)
+        self.assertEqual(info_classe_energetica, info_inserite[InfoInserita.classe_energetica])
 
     def test_dati_disponibili(self) -> None:
         xml_content = self.mock_response('annuncio.xml')
@@ -139,11 +144,13 @@ class GISyncInterpreterTests(unittest.TestCase):
 
         self.assertEqual(info_chiavi.information_type, DatoDisponibile.numero_chiavi)
         self.assertEqual(info_chiavi, 1)
+        self.assertEqual(info_chiavi, dati_disponibili[DatoDisponibile.numero_chiavi])
 
         info_altezza = dati_disponibili.by_information_type(DatoDisponibile.altezza)
 
         self.assertEqual(info_altezza.information_type, DatoDisponibile.altezza)
         self.assertEqual(info_altezza, 0)
+        self.assertEqual(info_altezza, dati_disponibili[DatoDisponibile.altezza])
 
 
 class InfoInseriteTests(unittest.TestCase):
