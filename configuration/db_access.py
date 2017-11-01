@@ -122,8 +122,8 @@ def db_initialize(settings: dict) -> peewee.Database:
     return database
 
 
-def global_options() -> peewee._ModelQueryResultWrapper:
-    return JobGlobalOption.select().where(JobGlobalOption.option_name ** 'gi_sync_agenzia.%').execute()
+def global_options(opt_prefix: str) -> peewee._ModelQueryResultWrapper:
+    return JobGlobalOption.select().where(JobGlobalOption.option_name ** '{}%'.format(opt_prefix)).execute()
 
 
 def agencies_options() -> peewee._ModelQueryResultWrapper:

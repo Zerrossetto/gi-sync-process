@@ -180,9 +180,10 @@ def get() -> LocalConfiguration:
             elif conf_type in db_access.handled_db_types():
 
                 db = db_initialize(settings)
+                prefix = 'gi_sync_agenzia.'
                 __conf_instance = LocalConfiguration(
-                    {opt.option_name[16:]: opt.option_value for opt in db_access.global_options()},
-                    list(db_access.agencies_options())
+                    {opt.option_name[len(prefix):]: opt.option_value for opt in db_access.global_options(prefix)},
+                    db_access.agencies_options()
                 )
                 db.close()
 
